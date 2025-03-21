@@ -12,15 +12,15 @@ const categories2 = [
     { name: "Gears Sales", image: "/images/ridingGearSale.jpg" },
 ];
 
-export const Categories = () => {
+export const Categories = (() => {
     return (
         // title
-        <section id="categories" className="min-h-screen flex flex-col justify-center items-center p-100 z-10">
+        <section id="categories" className="min-h-screen flex flex-col justify-center items-center p-10 md:p-40 lg:p-80 z-10">
             <div className="p-10">
-                <h2 className="text-4xl font-bold text-gray-300">FEATURED CATEGORIES</h2>
+                <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">FEATURED CATEGORIES</h2>
             </div>
-        {/* 1st category */}
-            <div className="w-3/4 h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* 1st category */}
+            <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {categories1.map((category, index) => (
                     <div key={index} className="flex justify-center items-center transition-all group">
                         <div className="relative w-full max-w-[300px] h-[200px] cursor-pointer hover:opacity-50 overflow-hidden transition-transform duration-300 group-hover:-translate-y-2">
@@ -33,9 +33,9 @@ export const Categories = () => {
                     </div>
                 ))}
             </div>
-        {/* second category */}
+            {/* second category */}
 
-        <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-30">
+            <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-30">
                 {categories2.map((category, index) => (
                     <div key={index} className="flex justify-center items-center">
                         <div className="relative w-full max-w-[500px] h-[300px] cursor-pointer transition-all group perspective-1000">
@@ -52,4 +52,4 @@ export const Categories = () => {
                 
         </section>
     );
-};
+});
