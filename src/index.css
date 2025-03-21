@@ -16,18 +16,41 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Create the marquee effect */
 @keyframes marquee {
   0% {
-    transform: translateX(80%);
+      transform: translateX(100%); /* Start off the right edge */
   }
   100% {
-    transform: translateX(-80%);
+      transform: translateX(-100%); /* End off the left edge */
   }
 }
 
+/* Apply animation to the text */
 .animate-marquee {
-  animation: marquee 40s linear infinite
+  display: inline-block;
+  white-space: nowrap; /* Prevent text wrapping */
+  animation: marquee 30s linear infinite; /* Standard animation speed */
+  padding-right: 100%; /* Smooth looping */
 }
+
+/* Ensure the container doesn't overflow */
+.marquee-container {
+  position: relative; /* Position context for the animation */
+  overflow: hidden; /* Hide text outside container */
+  width: 100%; /* Make container responsive */
+  max-width: 100%; /* Limit container width to 100% of parent */
+  padding-right: 100%; /* Optional padding for smooth looping effect */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  /* Slow down animation speed on smaller screens */
+  .animate-marquee {
+      animation: marquee 45s linear infinite; /* Slower animation */
+  }
+}
+
 
 @layer utilities {
   @keyframes blink {  
