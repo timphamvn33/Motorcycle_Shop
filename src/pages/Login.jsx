@@ -1,4 +1,5 @@
 
+import { Password } from "../assets/components/Password"
 import { Navbar } from "../assets/components/sections/Navbar"
 export const Login = (() => {
 return (
@@ -10,8 +11,8 @@ return (
                 <h2 className="text-4xl font-bold text-black text-center">Login</h2>
 
                 <input type="text" placeholder="Username" className="w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600  focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2" />
+                <Password/>
 
-                <input type="password" placeholder="Password" className="w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600  focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2" />
 
                 <div className="grid grid-cols-2 gap-14 text-gray-900">
                     <p>Remember Me</p>
