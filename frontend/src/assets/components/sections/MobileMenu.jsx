@@ -3,15 +3,8 @@ const mobileContent = [{name: "RIDING GEAR"}, {name: "PARTS"}, {name: "ACCESORIE
 export const MobileMenu = (({isMobileMenuClick, setIsMobileMenuClick}) => {
 
     const closeMobileClick = () => {
-        console.log("hello click from mobile")
         setIsMobileMenuClick(false);
     }
-
-    useEffect(() => {
-        console.log("isMobileMenuClick: ", isMobileMenuClick)
-    }, [isMobileMenuClick])
-
-
     
     return (
         <div className={`transform ${isMobileMenuClick? `translate-x-0`: `translate-x-full opacity-0`} fixed top-0 left-0 w-screen h-screen bg-gray-900 opacity-90 transition-transform duration-500 z-60`}>

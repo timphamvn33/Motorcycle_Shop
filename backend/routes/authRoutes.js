@@ -2,7 +2,6 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-
 const router = express.Router();
 
 // POST request to sign up
@@ -32,9 +31,6 @@ router.post("/Signup", async (req, res) => {
 // Login Route
 
 router.post("/Login", async (req, res) => {
-  console.log("hello api");
-  
-
   try{
     const {email, passWord} = req.body;
     const user = await User.findOne({email});
@@ -57,6 +53,8 @@ router.post("/Login", async (req, res) => {
       res.status(500).json({message: "Server error"});
   }
 })
+
+
 
 
 module.exports = router;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Navigate, useNavigate } from "react-router-dom";
 const navbarOption = [{name: "RIDING GEAR"}, {name: "PARTS"}, {name: "ACCESORIES"}, {name: "SALE"}]
 
-export const Navbar = (({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick}) => {
+export const Navbar = (({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, isUserLogin}) => {
     const clickMobileMenu = () => {
         setIsMobileMenuClick(pre => pre = true);
     }
@@ -10,15 +10,15 @@ export const Navbar = (({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick}
 
     const moveToLoginPage = () => {
         navigate('/Login');
-    } 
+    }
+
+    const moveToUserProfilePage = () => {
+        navigate("/UserProfile")
+    }
 
     const movetoHomePage = () => {
         navigate('/Home');
     }
-
-    useEffect(() => {
-        console.log("isMobileMenuClick in nav: ", isMobileMenuClick)
-    }, [isMobileMenuClick])
 
     return (
         <>
@@ -71,7 +71,7 @@ export const Navbar = (({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick}
 
                     <div className={isSmallScreen? `flex flex-row justify-end`: `flex flex-row justify-center p-8`}>
                         
-                        <img src="/images/profile.png" alt="Description of first image" onClick= {moveToLoginPage} className="cursor-pointer w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 mx-2.5 opacity-80" />
+                        {isUserLogin? <p onClick = {moveToUserProfilePage} className="flex justify-center items-center text-align cursor-pointer px-4 w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 mx-2.5 ">Hi! Customer</p>: <img src="/images/profile.png" alt="Description of first image" onClick= {moveToLoginPage} className="cursor-pointer w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 mx-2.5 opacity-80" />}
                         <img src="/images/cart.png" alt="Description of first image" className="w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 mx-2.5 opacity-80" />
                         <div className={isSmallScreen? `text-2xl flex transition-all duration-500 font-bold cursor-pointer mx-2.5 justify-center items-center w-6 md:w-8 lg:w-12 h-6 md:h-8 lg:h-12 opacity-80`: `hidden`}>
                             <button onClick={clickMobileMenu}><span>&#9776;</span></button>

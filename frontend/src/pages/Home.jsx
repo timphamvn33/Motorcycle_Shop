@@ -16,7 +16,7 @@ import { useState, useEffect } from "react";
 import { Navbar } from "../assets/components/sections/Navbar";
 import {MobileMenu} from "../assets/components/sections/MobileMenu";
 
-export const Home = (() => {
+export const Home = (({isUserLogin}) => {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
     const [isMobileMenuClick, setIsMobileMenuClick] = useState(false);
 
@@ -36,18 +36,13 @@ export const Home = (() => {
 
     }, [])
 
-    useEffect(() => {
-
-    console.log("isMobileMenuClick in app: ", isMobileMenuClick)
-
-    },[isMobileMenuClick])
     return (
         <>
-            <Navbar isSmallScreen={isSmallScreen} isMobileMenuClick={isMobileMenuClick} setIsMobileMenuClick={setIsMobileMenuClick} />
+            <Navbar isSmallScreen={isSmallScreen} isMobileMenuClick={isMobileMenuClick} setIsMobileMenuClick={setIsMobileMenuClick} isUserLogin = {isUserLogin}/>
             {/* close or open mobilemenu component when the isMobileMenuClick is false or true */}
             {/* {isMobileMenuClick && (<MobileMenu isMobileMenuClick = {isMobileMenuClick} setIsMobileMenuClick= {setIsMobileMenuClick}/>)}  */}
             <MobileMenu isMobileMenuClick = {isMobileMenuClick} setIsMobileMenuClick= {setIsMobileMenuClick}/>
-            <section id="categories" className="min-h-screen flex flex-col justify-center items-center p-10 md:p-40 lg:p-80 z-10">
+            <section id="categories" className="min-h-screen flex flex-col justify-center items-center p-10 md:p-40 lg:p-80 z-10 bg-gradient-to-r from-purple-900 to-indigo-800">
                 <div className="p-10">
                     <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">FEATURED CATEGORIES</h2>
                 </div>
