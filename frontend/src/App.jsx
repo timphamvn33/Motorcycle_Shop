@@ -4,7 +4,7 @@ import './App.css'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
 import { SignUp } from './pages/SignUp'
-import { UserProfile } from './pages/userProfile'
+import { UserProfile } from './pages/UserProfile'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
 
