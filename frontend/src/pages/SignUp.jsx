@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Password } from "../assets/components/Password";
 import { Navbar } from "../assets/components/sections/Navbar";
 import { useState } from "react";
+import {FaRegEye, FaRegEyeSlash} from "react-icons/fa"
 
 
 export const SignUp = (() => {
@@ -25,7 +26,7 @@ export const SignUp = (() => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
+      const response = await fetch("http://localhost:5000/api/auth/Signup", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +80,7 @@ export const SignUp = (() => {
             <div className="flex items-center w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600  focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2">
               <input
                   type = {isShowPassword? "text": "password"}
-                  placeholder= {placeholder}
+                  placeholder= "password"
                   name = "passWord"
                   value = {formData.passWord}
                   onChange={handleChange}
