@@ -29,13 +29,13 @@ export const Navbar = ({ isSmallScreen, isMobileMenuClick, setIsMobileMenuClick,
                     <div className=" text-lg lg:text-xl font-bold text-gray-800 absolute z-40 top-2 right-4 cursor-pointer hover:text-3xl hover:duration-300" onClick={() => setShowSale(false)}>
                         X
                     </div>
-                    <div className="relative z-30 text-center text-white bg-gradient-to-r py-2 from-pink-500 to-pink-900">
+                    <div className="relative z-30 text-center text-white bg-gray-50 py-2 ">
                         {/* Background overlay using pseudo-element */}
                         <div className="absolute inset-0 bg-black opacity-15 z-10"></div> {/* Semi-transparent overlay */}
                         
                         <div className="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold flex justify-center items-center relative z-20">
                             <div className="marquee-container">
-                                <p className="animate-marquee bg-gradient-to-b from-cyan-500 to-cyan-50 bg-clip-text text-transparent m-5">
+                                <p className="animate-marquee bg-gradient-to-b from-gray-950 to-gray-700 bg-clip-text text-transparent m-1">
                                     Thank you for being a valued customer! Enjoy 50% off on all gear accessories, and as a special bonus, get an additional 20% off when you apply for membership. Don’t miss out on these amazing savings—shop now and save more!
                                 </p>
                             </div>
@@ -96,9 +96,9 @@ export const Navbar = ({ isSmallScreen, isMobileMenuClick, setIsMobileMenuClick,
                         {isUserLogin ? (
                             <p onClick={moveToUserProfilePage} className="cursor-pointer text-sm lg:text-lg text-white">Hi! Customer</p>
                         ) : (
-                            <img src="/images/profile.png" alt="Profile" onClick={moveToLoginPage} className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10" />
+                            <img src="/images/profile.png" alt="Profile" onClick={moveToLoginPage} className="cursor-pointer w-10 h-10" />
                         )}
-                            <img src="/images/cart.png" alt="Cart" className=" cursor-pointer w-6 h-6 lg:w-10 lg:h-10" />
+                            <img src="/images/cart.png" alt="Cart" className=" cursor-pointer w-10 h-10" />
 
                         {/* Mobile Menu Icon */}
                         {isSmallScreen && (
@@ -107,21 +107,22 @@ export const Navbar = ({ isSmallScreen, isMobileMenuClick, setIsMobileMenuClick,
                     </div>
 
                 </div>
-                {/* Show RidingGear component if clicking on categories menu */}
-                {isCategoryMenuClick && (
-                    <div 
-                        className=" top-24 absolute left-0 w-full h-screen bg-gray-950/60 z-50">
+
+                    {/* Show RidingGear component if clicking on categories menu Using "pointer-events-none" is important to use the transition-opasity*/}
+                    <div
+                        className={` top-24 absolute left-0 min-w-screen min-h-screen bg-gray-950/60 z-50  transition-opacity duration-500 ${
+                                    isCategoryMenuClick ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
                         <div className="bg-amber-50 w-full h-[0.25px] opacity-70"></div>
-                        <div className=" top-0 left-0 w-screen h-[250px] bg-gradient-to-r from-gray-800 to-indigo-700 z-70 p-4">
+                        <div className={`top-0 left-0 w-screen h-[250px] bg-gradient-to-r from-gray-800 to-indigo-700 z-70 p-4 transition-all transform ease-in-out duration-700 ${isCategoryMenuClick? 'translate-y-0.5':'-translate-y-350'} `}>
                             <RidingGear />
                         </div>
 
                     </div>
-                    )}
+                    
                 {/* Show main menu */}
 
-                <div className={`absolute top-0 left-0 w-screen h-screen bg-gray-950/60 z-50 transition-opacity ease-in-out duration-150 ${mainMenuOn ? 'translate-x-0' : '-translate-x-full'}`}>
-                    <div className={`relative top-0 left-0 w-[500px] h-screen z-70 bg-gradient-to-r from-gray-800 to-indigo-700 transition-all transform duration-150 ${mainMenuOn ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className={`absolute top-0 left-0 w-screen min-h-screen bg-gray-950/60 z-50 transition-opacity duration-300 ${mainMenuOn ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+                    <div className={`relative top-0 left-0 w-[500px] h-screen z-70 bg-gradient-to-r from-gray-800 to-indigo-800 transition-all transform duration-500 ${mainMenuOn ? 'translate-x-0' : '-translate-x-full'}`}>
                         <div className="flex justify-start items-center w-full h-[97px] bg-gradient-to-r from-indigo-800 to-purple-900">
                             <span className="font-bold text-xl lg:text-2xl p-2">MENU</span>
                         </div>

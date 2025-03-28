@@ -55,7 +55,7 @@ export const SignUp = () => {
     return (
         <>
             <Navbar />
-            <div className="flex justify-center items-center p-40 bg-gradient-to-r from-purple-900 to-indigo-800">
+            <div className="flex justify-center items-center p-12 bg-gradient-to-r from-gray-950 to-gray-800 min-h-screen">
                 <div className="w-[300px] h-[500px] bg-gray-200/20 relative z-10 box-border rounded-2xl">
                     {/* Close Button */}
                     <button
@@ -65,7 +65,7 @@ export const SignUp = () => {
                         X
                     </button>
                     <div className="flex flex-col gap-4 justify-center items-center p-5 w-[300px] h-[500px] absolute z-50 inset-0">
-                        <h2 className="text-4xl font-bold text-black text-center">Sign Up</h2>
+                        <h2 className="text-4xl font-bold text-gray-50 text-center">Sign Up</h2>
                         <input
                             type="text"
                             placeholder="Username"
@@ -111,13 +111,13 @@ export const SignUp = () => {
                         </div>
 
                         <button
-                            className="bg-gray-900 text-gray-300 px-4 py-2 rounded-xl cursor-pointer hover:bg-blue-600 hover:text-gray-700"
+                            className="bg-gray-900 text-gray-50 px-4 py-2 rounded-xl cursor-pointer hover:bg-blue-600 hover:text-gray-700"
                             onClick={handleSubmit}
                         >
                             Sign Up
                         </button>
                         <button
-                            className="bg-gray-700 text-gray-300 px-4 py-2 rounded-xl cursor-pointer hover:bg-blue-600 hover:text-gray-700"
+                            className="bg-gray-700 text-gray-50 px-4 py-2 rounded-xl cursor-pointer hover:bg-blue-600 hover:text-gray-700"
                             onClick={movetoLoginPage}
                         >
                             Already have an account? Login

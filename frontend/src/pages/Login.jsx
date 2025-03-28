@@ -41,12 +41,12 @@ export const Login = ({ isUserLogin, setIsUserLogin }) => {
     return (
         <>
             <Navbar />
-            <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-900 to-indigo-800">
+            <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
                 <div className="relative p-10 w-full max-w-md bg-gray-200/20 rounded-2xl shadow-lg">
                     {/* Close Button */}
                     <button
                         onClick={closeLoginBox}
-                        className="absolute top-4 right-4 text-2xl text-gray-800 hover:text-purple-500 cursor-pointer"
+                        className="absolute top-4 right-4 text-2xl text-gray-800 hover:text-blue-400 cursor-pointer"
                     >
                         X
                     </button>

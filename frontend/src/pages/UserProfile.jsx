@@ -62,7 +62,7 @@ export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
     return (
         <>
             <Navbar isUserLogin={isUserLogin} />
-            <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-purple-900 to-indigo-800">
+            <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
                 <div className="relative p-10 w-full max-w-md bg-gray-200/20 rounded-2xl shadow-lg">
                     <div className="text-center mb-6">
                         <h2 className="text-4xl font-bold text-white">User Profile</h2>
