@@ -5,7 +5,9 @@ import { RidingGear } from "./RidingGear";
 const navbarOption = [{name: "RIDING GEAR"}, {name: "PARTS"}, {name: "ACCESORIES"}, {name: "SALE"}];
 
 export const Navbar = ({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, isUserLogin}) => {
-    const [isHover, setIsHover] = useState(false);
+    const [isHoverMenu, setIsHoverMenu] = useState(false);
+    const [isHoverMenuContent, setIsHoverMenuContent] = useState(false);
+    const [lastY, setLastY] = useState(200);
     const clickMobileMenu = () => {
         setIsMobileMenuClick(prev => !prev);
     }
@@ -23,20 +25,42 @@ export const Navbar = ({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, 
     const movetoHomePage = () => {
         navigate('/Home');
     }
-    const checkMouseHover = () => {
-        setIsHover(true)
-        console.log("heelo hover")
+    const checkMouseHover = (hoverName) => {
+        if(hoverName === "RIDING GEAR") {
+
+            setIsHoverMenu(true)
+            console.log("heelo hover")
+
+        }
+
     }
+
+    const mousePosition = (e) => {
+        const currentY = e.clientY;
+        console.log(e.clientY)
+        if(currentY < lastY) {
+            console.log("hhelo up")
+            setIsHoverMenu(false)
+        } else if (currentY > lastY) {
+            console.log("heelo down")
+            setIsHoverMenu(true)
+        }
+    }
+
     useEffect(() => {
-        console.log("isHover: ", isHover)
+        window.addEventListener("mousemove", mousePosition);
+        return () => {
+            window.removeEventListener("mousemove", mousePosition);
+        }
     })
+
 
 
 
     return (
         <>
             {/* Sale note running */}
-            <div className="text-center text-white bg-gradient-to-r from-indigo-700 to-purple-800 py-2">
+            <div className="text-center text-white bg-gradient-to-r py-2 from-pink-500 to-pink-900">
                 <div className="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold flex justify-center items-center">
                     <div className="marquee-container">
                         <p className="animate-marquee bg-gradient-to-b from-cyan-500 to-cyan-50 bg-clip-text text-transparent m-5">
@@ -46,7 +70,7 @@ export const Navbar = ({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, 
                 </div>
             </div>
 
-            <nav className="sticky top-0 left-0 w-full z-50 bg-gradient-to-r from-purple-800 to-indigo-700 opacity-90 shadow-2xl backdrop-blur-lg">
+            <nav className="sticky top-0 left-0 w-full z-50 bg-gradient-to-r from-purple-950 to-indigo-700 opacity-90 shadow-2xl backdrop-blur-lg">
     
                 {/* First Row: Logo, Search, Profile, Cart Icon */}
                 <div className={`p-5 grid ${isSmallScreen ? "grid-cols-2" : "grid-cols-4"} gap-6 justify-center items-center text-gray-300 bg-gradient-to-r from-purple-800 to-indigo-700 bg-opacity-80`}>
@@ -78,9 +102,9 @@ export const Navbar = ({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, 
                         {isUserLogin ? (
                             <p onClick={moveToUserProfilePage} className="cursor-pointer text-sm lg:text-lg text-white">Hi! Customer</p>
                         ) : (
-                            <img src="/images/profile.png" alt="Profile" onClick={moveToLoginPage} className="cursor-pointer w-8 h-8 opacity-80" />
+                            <img src="/images/profile.png" alt="Profile" onClick={moveToLoginPage} className="cursor-pointer w-8 h-8 opacity-90" />
                         )}
-                        <img src="/images/cart.png" alt="Cart" className="w-8 h-8 opacity-80" />
+                        <img src="/images/cart.png" alt="Cart" className="w-8 h-8 opacity-90" />
 
                         {/* Mobile Menu Icon */}
                         {isSmallScreen && (
@@ -94,17 +118,17 @@ export const Navbar = ({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, 
 
                 {/* Second Row: Menu Options (Aligned in a single row) */}
                 {!isSmallScreen && (
-                    <div className="flex justify-center items-center space-x-8 lg:space-x-12 text-sm lg:text-lg font-bold text-gray-50 py-3 bg-gradient-to-r from-pink-500 to-pink-700 opacity-80">
+                    <div className="flex justify-center items-center space-x-8 lg:space-x-12 text-sm lg:text-lg font-bold text-gray-50 py-3 bg-gradient-to-r from-indigo-700 to-purple-800  opacity-80">
                         {/* ☰ MENU at the end */}
-                        <span className="cursor-pointer text-lg lg:text-xl font-bold hover:bg-gradient-to-b from-purple-800 to-indigo-700 hover:bg-clip-text hover:text-transparent transition-all duration-100">
+                        <span className="cursor-pointer text-lg lg:text-xl font-bold hover:bg-gradient-to-b from-pink-500 to-pink-900 hover:bg-clip-text hover:text-transparent transition-all duration-100">
                             &#9776; MENU
                         </span>
                         {navbarOption?.map((option, index) => (
                             <span key={index} 
                             // set ishover true or false when mouse is enter or leave
-                                onMouseEnter={checkMouseHover}
-                                onMouseLeave={() => setIsHover(false)}
-                            className="cursor-pointer hover:bg-gradient-to-b from-purple-800 to-indigo-700 hover:bg-clip-text hover:text-transparent transition-all duration-100">
+                                onMouseEnter={() => checkMouseHover(option.name)}
+                                onMouseLeave={() => setIsHoverMenu(false)}
+                            className="cursor-pointer hover:bg-gradient-to-b from-pink-500 to-pink-900 hover:bg-clip-text hover:text-transparent transition-all duration-100">
                                 {option.name}
                             </span>
                         ))}
@@ -112,13 +136,16 @@ export const Navbar = ({isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, 
                     
                 )}
                 {/* Show RidingGear component if hovered over "RIDING GEAR" */}
-                {isHover && (
-                <div className="absolute top-36 left-0 w-full h-[100px] bg-gray-600 z-50 p-4 shadow-lg">
+                {(isHoverMenu || isHoverMenuContent) && (
+                <div onMouseEnter={() => setIsHoverMenuContent(true)}
+                    onMouseLeave ={() => setIsHoverMenuContent(false)}
+                
+                    className="absolute top-36 left-0 w-full h-[250px] bg-gradient-to-r from-indigo-700 to-purple-800 z-50 p-4 shadow-lg">
                     <RidingGear />
                 </div>)}
 
                 {/* Divider */}
-                <div className="bg-gradient-to-r from-gray-300 to-white w-full h-1 opacity-70"></div>
+                <div className="bg-amber-50 w-full h-0.5 opacity-70"></div>
 
             </nav>
         </>
