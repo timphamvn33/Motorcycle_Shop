@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Navbar } from "../assets/components/sections/Navbar";
+import { Home } from './Home' 
 
 export const Login = ({ isUserLogin, setIsUserLogin }) => {
     const [isShowPassword, setIsShowPassword] = useState(false);
@@ -40,9 +40,11 @@ export const Login = ({ isUserLogin, setIsUserLogin }) => {
 
     return (
         <>
-            <Navbar />
-            <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
-                <div className="relative p-10 w-full max-w-md bg-blue-300/70 rounded-2xl shadow-lg">
+            <Home/>
+            <div className="fixed inset-0 w-full h-screen bg-gray-950 opacity-65 z-20"></div>
+            <div className="flex absolute top-1/12 left-0 justify-center items-center min-h-screen w-full z-40 transition-all transform translate-y-0 duration-700">
+                
+                <div className="relative p-10 w-full max-w-md bg-blue-300 rounded-2xl shadow-lg">
                     {/* Close Button */}
                     <button
                         onClick={closeLoginBox}
@@ -90,12 +92,12 @@ export const Login = ({ isUserLogin, setIsUserLogin }) => {
                         </div>
 
                         {/* Remember Me & Forgot Password */}
-                        <div className="flex justify-between items-center text-gray-900 text-sm">
+                        <div className="flex justify-between items-center text-gray-900 text-md">
                             <label className="flex items-center space-x-2">
                                 <input type="checkbox" />
                                 <span>Remember Me</span>
                             </label>
-                            <button className="text-blue-200 hover:underline">Forgot Password?</button>
+                            <button className="text-blue-800 hover:underline">Forgot Password?</button>
                         </div>
 
                         {/* Error Message */}

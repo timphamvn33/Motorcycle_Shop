@@ -52,7 +52,7 @@ export const Home = (({isUserLogin}) => {
             {/* close or open mobilemenu component when the isMobileMenuClick is false or true */}
             {/* {isMobileMenuClick && (<MobileMenu isMobileMenuClick = {isMobileMenuClick} setIsMobileMenuClick= {setIsMobileMenuClick}/>)}  */}
             <MobileMenu isMobileMenuClick = {isMobileMenuClick} setIsMobileMenuClick= {setIsMobileMenuClick}/>
-            <section id="categories" className="min-h-screen flex flex-col justify-center items-center p-10 md:p-40 lg:p-80 z-10 bg-gradient-to-r from-gray-950 to-gray-800">
+            <section id="categories" className="min-h-screen flex flex-col justify-center items-center p-10 md:p-40 lg:p-60 z-10 bg-gradient-to-r from-gray-950 to-gray-800">
                 <div className="p-10">
                     <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">FEATURED CATEGORIES</h2>
                 </div>

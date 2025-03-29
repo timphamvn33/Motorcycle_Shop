@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Navbar } from "../assets/components/sections/Navbar";
+import { Home } from './Home' 
 
 export const SignUp = () => {
     const [isShowPassword, setIsShowPassword] = useState(false);
@@ -54,9 +54,10 @@ export const SignUp = () => {
 
     return (
         <>
-            <Navbar />
-            <div className="flex justify-center items-center p-12 bg-gradient-to-r from-gray-950 to-gray-800 min-h-screen">
-                <div className="w-[300px] h-[500px] bg-blue-300/70 relative z-10 box-border rounded-2xl">
+            <Home/>
+            <div className="fixed inset-0 w-full h-screen bg-gray-950 opacity-65 z-20"></div>
+            <div className="flex absolute top-1/12 left-0 justify-center items-center min-h-screen w-full z-40">
+                <div className="w-[300px] h-[500px] bg-blue-300 relative z-10 box-border rounded-2xl">
                     {/* Close Button */}
                     <button
                         onClick={closeSignUpBox}

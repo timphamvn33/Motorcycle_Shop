@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Navbar } from "../assets/components/sections/Navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Home } from './Home' 
 
 export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
     const navigate = useNavigate();
@@ -61,9 +61,10 @@ export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
 
     return (
         <>
-            <Navbar isUserLogin={isUserLogin} />
-            <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
-                <div className="relative p-10 w-full max-w-md bg-blue-300/70 rounded-2xl shadow-lg">
+            <Home/>
+            <div className="fixed inset-0 w-full h-screen bg-gray-950 opacity-65 z-20"></div>
+            <div className="flex absolute top-1/12 left-0 justify-center items-center min-h-screen w-full z-40">
+                <div className="relative p-10 w-full max-w-md bg-blue-300 rounded-2xl shadow-lg">
                     <div className="text-center mb-6">
                         <h2 className="text-4xl font-bold text-white">User Profile</h2>
                     </div>
@@ -100,13 +101,13 @@ export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
                             </>
                         ) : (
                             <>
-                                <div className="text-lg text-white font-semibold space-y-2">
+                                <div className="text-lg font-semibold space-y-2">
                                     <div className="flex justify-between">
-                                        <span className="text-gray-300">User Name:</span>
+                                        <span className="text-gray-900">User Name:</span>
                                         <span>{user.userName}</span>
                                     </div>
                                     <div className="flex justify-between">
-                                        <span className="text-gray-300">Email:</span>
+                                        <span className="text-gray-900">Email:</span>
                                         <span>{user.email}</span>
                                     </div>
                                 </div>

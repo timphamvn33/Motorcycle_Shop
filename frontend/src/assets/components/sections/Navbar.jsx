@@ -29,13 +29,13 @@ export const Navbar = ({ isSmallScreen, isMobileMenuClick, setIsMobileMenuClick,
                     <div className=" text-lg lg:text-xl font-bold text-gray-800 absolute z-40 top-2 right-4 cursor-pointer hover:text-3xl hover:duration-300" onClick={() => setShowSale(false)}>
                         X
                     </div>
-                    <div className="relative z-30 text-center text-white bg-gray-50 py-2 ">
+                    <div className="relative z-30 text-center bg-white py-2 ">
                         {/* Background overlay using pseudo-element */}
                         <div className="absolute inset-0 bg-black opacity-15 z-10"></div> {/* Semi-transparent overlay */}
                         
                         <div className="text-lg sm:text-lg md:text-xl lg:text-2xl font-bold flex justify-center items-center relative z-20">
                             <div className="marquee-container">
-                                <p className="animate-marquee bg-gradient-to-b from-gray-950 to-gray-700 bg-clip-text text-transparent m-1">
+                                <p className="animate-marquee bg-gray-950 bg-clip-text text-transparent m-1">
                                     Thank you for being a valued customer! Enjoy 50% off on all gear accessories, and as a special bonus, get an additional 20% off when you apply for membership. Don’t miss out on these amazing savings—shop now and save more!
                                 </p>
                             </div>
