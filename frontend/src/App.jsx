@@ -6,6 +6,7 @@ import { Login } from './pages/Login'
 import { SignUp } from './pages/SignUp'
 import { UserProfile } from './pages/UserProfile'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ShopAll } from './pages/ShopAll'
 function App() {
 
   const [isUserLogin, setIsUserLogin] = useState(false);
@@ -19,6 +20,7 @@ function App() {
         <Route path="/Login" element = {<Login isUserLogin = {isUserLogin} setIsUserLogin={setIsUserLogin}/>}/>
         <Route path="/SignUp" element = {<SignUp/>}/>
         <Route path="/UserProfile" element = {<UserProfile isUserLogin = {isUserLogin} setIsUserLogin={setIsUserLogin}/>} />
+        <Route path = "/ShopAll" element = {<ShopAll/>}/>
       </Routes>
     </Router>
 
