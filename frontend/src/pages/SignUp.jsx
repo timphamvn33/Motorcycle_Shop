@@ -56,11 +56,11 @@ export const SignUp = () => {
         <>
             <Navbar />
             <div className="flex justify-center items-center p-12 bg-gradient-to-r from-gray-950 to-gray-800 min-h-screen">
-                <div className="w-[300px] h-[500px] bg-gray-200/20 relative z-10 box-border rounded-2xl">
+                <div className="w-[300px] h-[500px] bg-blue-300/70 relative z-10 box-border rounded-2xl">
                     {/* Close Button */}
                     <button
                         onClick={closeSignUpBox}
-                        className=" absolute top-4 right-4 text-2xl text-gray-800 hover:text-purple-300 cursor-pointer z-100"
+                        className=" absolute top-4 right-4 text-2xl text-gray-800 hover:text-blue-500 cursor-pointer z-100"
                     >
                         X
                     </button>
@@ -72,18 +72,18 @@ export const SignUp = () => {
                             name="userName"
                             value={formData.userName}
                             onChange={handleChange}
-                            className="w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600 focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2"
+                            className="w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600 focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2 text-gray-800"
                         />
                         <input
                             type="email"
                             placeholder="Email"
                             name="email"
                             value={formData.email}
-                            onChange={handleChange}
-                            className="w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600 focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2"
+                            onChange={handleChange} 
+                            className="w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600 focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2 text-gray-800"
                         />
                         {/* Password Input */}
-                        <div className="flex items-center w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600  focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2">
+                        <div className="flex items-center w-full h-10 rounded-2xl px-4 bg-gray-200/40 border border-gray-900 focus:border-blue-600  focus:bg-blue-600/40 focus:ring-blue-600 focus:outline-none focus:ring-2 text-gray-800">
                             <input
                                 type={isShowPassword ? "text" : "password"}
                                 placeholder="Password"

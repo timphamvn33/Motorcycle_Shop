@@ -63,7 +63,7 @@ export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
         <>
             <Navbar isUserLogin={isUserLogin} />
             <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
-                <div className="relative p-10 w-full max-w-md bg-gray-200/20 rounded-2xl shadow-lg">
+                <div className="relative p-10 w-full max-w-md bg-blue-300/70 rounded-2xl shadow-lg">
                     <div className="text-center mb-6">
                         <h2 className="text-4xl font-bold text-white">User Profile</h2>
                     </div>
@@ -81,7 +81,7 @@ export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
                                     placeholder="User Name"
                                     value={formData.userName}
                                     onChange={handleChange}
-                                    className="w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                                    className="w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none text-gray-800"
                                 />
                                 <input
                                     type="email"
@@ -89,7 +89,7 @@ export const UserProfile = ({ isUserLogin, setIsUserLogin }) => {
                                     placeholder="Email"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                                    className="w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none text-gray-800"
                                 />
                                 <button
                                     onClick={handleSaveProfile}

@@ -57,11 +57,11 @@ export const Home = (({isUserLogin}) => {
                     <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">FEATURED CATEGORIES</h2>
                 </div>
                 {/* 1st section */}
-                <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 pb-20">
                     {section1.map((category, index) => (
                         <div key={index} className="flex justify-center items-center transition-all group">
                             <div className="relative w-full max-w-[400px] h-[300px] cursor-pointer hover:opacity-50 overflow-hidden transition-transform duration-300 group-hover:-translate-y-2">
-                                <div className="absolute inset-0 bg-red-400 opacity-40 transition-opacity duration-700 rounded-2xl"></div>
+                                <div className="absolute inset-0 bg-blue-300 opacity-40 transition-opacity duration-700 rounded-2xl"></div>
                                 <img className="absolute w-full h-full object-cover opacity-15 rounded-2xl" src={category.image} alt={category.name} />
                                 <div className="absolute inset-0 flex justify-center items-center w-full h-full">
                                     <p className="text-xl lg:text-3xl text-center text-gray-50 capitalize">{category.name}</p>
@@ -72,7 +72,11 @@ export const Home = (({isUserLogin}) => {
                 </div>
                 {/* 2nd section */}
 
-                <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-30">
+                <div className="p-10">
+                    <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">BIG SALE</h2>
+                </div>
+
+                <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
                     {section2.map((category, index) => (
                         <div key={index} className="flex justify-center items-center">
                             <div className="relative w-full max-w-[500px] h-[300px] cursor-pointer transition-all group perspective-1000">
@@ -88,25 +92,61 @@ export const Home = (({isUserLogin}) => {
                 </div>
 
                     {/* 3rd section */} 
+                    <div className="p-10">
+                        <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">TRENDING DEALS</h2>
+                    </div>
                     {/* Scrollable Grid Container */}
-                    <div className="flex overflow-auto md:overflow-scroll  snap-x snap-mandatory scroll-smooth w-[600px] h-[250px] lg:w-[1000px] lg:h-[450px] bg-gray-100 rounded-2xl shadow-xl shadow-amber-100/40">
+                    <div className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory 
+                        w-full h-[250px] md:min-h-[300px] lg:h-[440px] bg-gray-100 rounded-2xl shadow-xl shadow-amber-100/40">
+                        
                         {section3.map((category, index) => (
-                        <div key={index} className="flex-shrink-0 w-1/3 p-4 snap-center">
-                            <div className="w-[100px] h-[100px] lg:w-[300px] lg:h-[300px] cursor-pointer transition-all group perspective-1000">
-                                <img
-                                className="w-full h-full object-cover opacity-80 transform transition-transform duration-300 group-hover:translate-y-[-5px] group-hover:scale-105"
-                                src={category.image}
-                                alt={category.name}
-                                />
-                                <div className="flex flex-col items-center">
-                                <p className="text-md lg:text-lg text-gray-800 capitalize tracking-tight">{category.name}</p>
-                                <p className="text-xl lg:text-2xl text-amber-600 capitalize tracking-tight">{category.star}</p>
-                                <p className="text-2xl lg:text-3xl text-gray-800 capitalize tracking-tight font-bold">{category.price}</p>
+                            <div key={index} className="flex-shrink-0 min-w-[150px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[300px] p-4 snap-center">
+                                <div className="w-full h-full cursor-pointer transition-all group perspective-1000">
+                                    <img
+                                        className="w-full h-[100px] sm:h-[150px] md:h-[200px] lg:h-[300px] object-cover opacity-80 
+                                            transform transition-transform duration-300 group-hover:translate-y-[-5px] group-hover:scale-105"
+                                        src={category.image}
+                                        alt={category.name}
+                                    />
+                                    <div className="flex flex-col items-center mt-2">
+                                        <p className="text-sm sm:text-md md:text-lg lg:text-xl text-gray-800 capitalize tracking-tight">{category.name}</p>
+                                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-amber-600 capitalize tracking-tight">{category.star}</p>
+                                        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 capitalize tracking-tight font-bold">{category.price}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                     </div>
+
+
+                    {/* 3rd section */} 
+                    <div className="pt-40 pb-10">
+                        <h2 className="text-xl md:text-2xl lg:text-4xl font-bold text-gray-300 text-center">Exclusives</h2>
+                    </div>
+                    {/* Scrollable Grid Container */}
+                    {/* Scrollable Grid Container */}
+                    <div className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory 
+                        w-full h-[250px] md:h-[300px] lg:h-[440px] bg-gray-100 rounded-2xl shadow-xl shadow-amber-100/40">
+                        
+                        {section3.map((category, index) => (
+                            <div key={index} className="flex-shrink-0 min-w-[150px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[300px] p-4 snap-center">
+                                <div className="w-full h-full cursor-pointer transition-all group perspective-1000">
+                                    <img
+                                        className="w-full h-[100px] sm:h-[150px] md:h-[200px] lg:h-[300px] object-cover opacity-80 
+                                            transform transition-transform duration-300 group-hover:translate-y-[-5px] group-hover:scale-105"
+                                        src={category.image}
+                                        alt={category.name}
+                                    />
+                                    <div className="flex flex-col items-center mt-2">
+                                        <p className="text-sm sm:text-md md:text-lg lg:text-xl text-gray-800 capitalize tracking-tight">{category.name}</p>
+                                        <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-amber-600 capitalize tracking-tight">{category.star}</p>
+                                        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 capitalize tracking-tight font-bold">{category.price}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                 
 
 

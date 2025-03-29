@@ -42,7 +42,7 @@ export const Login = ({ isUserLogin, setIsUserLogin }) => {
         <>
             <Navbar />
             <div className="flex justify-center items-center min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
-                <div className="relative p-10 w-full max-w-md bg-gray-200/20 rounded-2xl shadow-lg">
+                <div className="relative p-10 w-full max-w-md bg-blue-300/70 rounded-2xl shadow-lg">
                     {/* Close Button */}
                     <button
                         onClick={closeLoginBox}
@@ -64,18 +64,18 @@ export const Login = ({ isUserLogin, setIsUserLogin }) => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none"
+                                className="w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none text-gray-900 focus:bg-blue-600/40"
                             />
                         </div>
 
-                        <div className="flex items-center w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none">
+                        <div className="flex items-center w-full h-12 px-4 rounded-xl bg-gray-200/40 border border-gray-900 focus:ring-2 focus:ring-blue-600 focus:outline-none text-gray-900 focus:bg-blue-600/40">
                             <input
                                 type={isShowPassword ? "text" : "password"}
                                 placeholder="Password"
                                 value={passWord}
                                 onChange={(e) => setPassWord(e.target.value)}
                                 required
-                                className="w-full bg-transparent border-none focus:ring-0 outline-none"
+                                className="w-full bg-transparent border-none focus:outline-none"
                             />
                             <div
                                 className="cursor-pointer"
