@@ -66,9 +66,37 @@ const generalList = [
                 
                 ]},
     ];
+import { useEffect, useState } from "react";
 import { Navbar } from "../assets/components/sections/Navbar"
 
 export const ShopAll = ( () => {
+
+    const [subDetailToggle, setSubDetailToggle] = useState({});
+    const [detailToggle, setDetailToggle] = useState({});
+
+    const toggleSubDetail = (typeFilter, index) => {
+        console.log("typeFilter: ", typeFilter);
+        console.log("index: ", index)
+        setSubDetailToggle((pre) => ({
+            ...pre,
+            [typeFilter + index]: !pre[typeFilter + index],
+            
+        }))
+    }
+
+    const toggleDetail = (index) => {
+        setDetailToggle((pre) => ({...pre, [index]: !pre[index]}))
+
+
+    }
+    useEffect(() => 
+    {
+        console.log("detailToggle: ", detailToggle)
+    }, [detailToggle])
+
+
+
+    
 
     return (
         <>
@@ -78,26 +106,46 @@ export const ShopAll = ( () => {
 
                 {/* filter navbar */}
 
-                <div className="h-[calc(100vh-95px)] w-1/6 overflow-y-auto border-2 border-gray-500 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700 ">
-                    <div className="w-full h-10 bg-gradient-to-r from-gray-300 to-gray-500 flex justify-center items-center ">
+                <div className="min-h-screen w-1/6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-700 relative">
+                    <div className="w-full h-10 bg-gradient-to-r from-gray-300 to-gray-500 flex justify-center items-center z-20 absolute">
                         <h1 className="text-2xl text-gray-950 text-center ">Filter</h1>
                     </div>
-                    <div className="w-full  ">
-                        <h2 className="text-2xl text-gray-950 text-center ">General</h2>
+                    <div className="w-full h-full bg-gradient-to-r from-gray-950 to-gray-800 absolute top-0 left-0 z-10 "></div>
+                    <div className="w-full z-20 absolute top-10 bg-gradient-to-r from-gray-950 to-gray-800">
                         {/* typeFilter */}
                         {generalList.map((gen, index) => (
                                         <ul key = {index}>
-                                            <li> <h4 className="text-2xl font-bold p-2 text-gray-50">{gen.typeFilter}</h4>
+                                            <li> 
+                                                <div className=" p-2 cursor-pointer" onClick={() => toggleDetail(index)}>
+                                                    <span className="text-2xl font-bold text-gray-50">
+                                                        {gen.typeFilter}
+                                                    </span>
+                                                            
+                                                    {/* up or down arrow */}
+                                                    {detailToggle[index]? <span className="text-md p-2 opacity-80">&or;</span>:<span className="text-md p-2 opacity-80">&and;</span>}
+
+                                                
+                                                </div>
                                             {/* detail */}
+                                            <ul className = {`${detailToggle[index]? `block`: `hidden`}`}>
                                                 {gen.detail.map((detail, index2) => (
-                                                    <ul key = {index2}>
-                                                        <li>
-                                                            <h3 className="text-xl font-semibold pl-20 text-gray-50">{detail.name}</h3>
+                                                    
+                                                        <li key = {index2}>
+                                                            <div className=" pl-20 text-gray-50 cursor-pointer" onClick={() => toggleSubDetail(gen.typeFilter, index2)}>
+                                                                <span className="text-xl font-semibold">{detail.name}</span>
+                                                                {/* up or down arrow */}
+                                                                {subDetailToggle[gen.typeFilter+index2]? <span className="text-md p-2 opacity-80">&or;</span>:<span className="text-md p-2 opacity-80">&and;</span>}
+                                                                
+                                                            </div>
                                                             {/* sub_detail */}
                                                                 {detail.subdetail.map((subDetail, index3) => (
-                                                                    <ul key = {index3}>
-                                                                        <li>
-                                                                            <h3 className="text-xl font-semibold pl-40 text-gray-50">{subDetail}</h3>
+                                                                    <ul key = {index3} className={`${subDetailToggle[gen.typeFilter+index2]?`block`:`hidden`}`}>
+                                                                        <li >
+                                                                            <div className="text-xl font-semibold pl-40 text-gray-50 ">
+                                                                                <input type="checkbox" className="w-4 h-4"/>
+                                                                                <label className="pl-2">{subDetail}</label>
+                                                                            </div>
+                                                                            
                                     
                                                                         </li>
                                                                     </ul>
@@ -105,9 +153,9 @@ export const ShopAll = ( () => {
                                                                 ))}
                     
                                                         </li>
-                                                    </ul>
 
                                                 ))}
+                                            </ul>
 
                                             </li>
                                         </ul>
