@@ -22,6 +22,16 @@ const section3 = [
     {  name: "V9 Head Set", price: "$599", star: "/images/2Stars.jpg", image: "/images/V9Headset.avif" },
 ];
 
+const section4 = [        
+    {  name: "menCap_boot", price: "$800", star: "/images/3Stars.jpg", image: "/images/menCap_boot.jpg" },
+    {  name: "mesh_pant", price: "$450", star: "/images/4Stars.jpg", image: "/images/mesh_pant.jpg" },
+    {  name: "neon_rs-200_glove", price: "$600", star: "/images/5Stars.jpg", image: "/images/neon_rs-200_glove.jpg" },
+    {  name: "Dainese_glove2", price: "$400", star: "/images/3Stars.jpg", image: "/images/dainese_gloves2.jpg" },
+    {  name: "revit_cassini_glove", price: "$750", star: "/images/5Stars.jpg", image: "/images/revit_cassini_glove.jpg" },
+    {  name: "Royal_boots", price: "$799", star: "/images/4Stars.jpg", image: "/images/Royal_boots.jpg" },
+    {  name: "shima_boot", price: "$699", star: "/images/4Stars.jpg", image: "/images/shima_boot.jpg" },
+    {  name: "waterproff_pant", price: "$699", star: "/images/4Stars.jpg", image: "/images/waterproff_pant.jpg" },]
+
 import { useState, useEffect } from "react";
 import { Navbar } from "../assets/components/sections/Navbar";
 import {MobileMenu} from "../assets/components/sections/MobileMenu";
@@ -62,7 +72,7 @@ export const Home = (({isUserLogin}) => {
                 {/* 1st section */}
                 <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-20 md:px-40 lg:px-60">
                     {section1.map((category, index) => (
-                        <div key={index} className="flex justify-center items-center transition-all group">
+                        <div key={index} className="flex justify-center items-center transition-all group" onClick={() => navigate("/ShopAll")}>
                             <div className="relative w-full max-w-[400px] h-[300px] cursor-pointer hover:opacity-50 overflow-hidden transition-transform duration-300 group-hover:-translate-y-2">
                                 <div className="absolute inset-0 bg-blue-300 opacity-40 transition-opacity duration-700 rounded-2xl"></div>
                                 <img className="absolute w-full h-full object-cover opacity-15 rounded-2xl" src={category.image} alt={category.name} />
@@ -135,7 +145,7 @@ export const Home = (({isUserLogin}) => {
                     <div className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory 
                         w-full min-h-[250px] lg:h-[530px] bg-white rounded-2xl shadow-xl shadow-amber-100/40">
                         
-                        {section3.map((category, index) => (
+                        {section4.map((category, index) => (
                             <div key={index} className="flex-shrink-0 min-w-[150px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[250px] p-4 snap-center">
                                 <div className="w-full h-full cursor-pointer transition-all group perspective-1000">
                                     <img
@@ -170,10 +180,6 @@ export const Home = (({isUserLogin}) => {
                         </button>
 
                     </div>
-
-                
-
-
             </section>
         </>
     );

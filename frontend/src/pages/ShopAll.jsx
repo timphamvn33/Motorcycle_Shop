@@ -59,12 +59,38 @@ const generalList = [
     {typeFilter: "Accessories", 
         detail: [    {name: "Type ", subdetail: ["Bluetooth", "Intercoms", "Tank Bags", "ackpacks", "Knee Sliders", "Base Layers"]},
                     {name: "Brand Compatibility", subdetail: ["For specific helmets or bikes"]},
-
-    
-    
-    
                 
                 ]},
+    ];
+
+    const items = [
+        {  name: "Allex Xtreme Jacket", price: "$800", star: "/images/3Stars.jpg", image: "/images/AllextremeJack.jpg" },
+        {  name: "HJC Full 3 Helmet", price: "$450", star: "/images/4Stars.jpg", image: "/images/HJCHelm.jpg" },
+        {  name: "K1 Full Helmet", price: "$600", star: "/images/5Stars.jpg", image: "/images/k1Helm.jpg" },
+        {  name: "Mattle Black Helmet", price: "$400", star: "/images/3Stars.jpg", image: "/images/MattleBlackHelm.jpg" },
+        {  name: "Revit Jacket", price: "$750", star: "/images/5Stars.jpg", image: "/images/RevitJack.jpg" },
+        {  name: "Sena Head Set", price: "$799", star: "/images/4Stars.jpg", image: "/images/SenaHeadset.jpg" },
+        {  name: "SGIR Jacket", price: "$699", star: "/images/4Stars.jpg", image: "/images/SGIR_Jack.jpg" },
+        {  name: "V9 Head Set", price: "$599", star: "/images/2Stars.jpg", image: "/images/V9Headset.avif" },
+
+        {  name: "Alpinestars_3017_boot", price: "$800", star: "/images/3Stars.jpg", image: "/images/Alpinestars_3017_boot.jpg" },
+        {  name: "Alpinestars_3017_boot2", price: "$450", star: "/images/4Stars.jpg", image: "/images/Alpinestars_3017_boot2.jpg" },
+        {  name: "Dainese_glove", price: "$600", star: "/images/5Stars.jpg", image: "/images/Dainese_glove.jpg" },
+        {  name: "defender_pant", price: "$750", star: "/images/5Stars.jpg", image: "/images/defender_pant.jpg" },
+        {  name: "enduro_pant", price: "$799", star: "/images/4Stars.jpg", image: "/images/enduro_pant.jpg" },
+        {  name: "goatskin_glove", price: "$699", star: "/images/4Stars.jpg", image: "/images/goatskin_glove.jpg" },
+        {  name: "iron_jia_gloves", price: "$599", star: "/images/2Stars.jpg", image: "/images/iron_jia_gloves.jpg" },
+
+        {  name: "menCap_boot", price: "$800", star: "/images/3Stars.jpg", image: "/images/menCap_boot.jpg" },
+        {  name: "mesh_pant", price: "$450", star: "/images/4Stars.jpg", image: "/images/mesh_pant.jpg" },
+        {  name: "neon_rs-200_glove", price: "$600", star: "/images/5Stars.jpg", image: "/images/neon_rs-200_glove.jpg" },
+        {  name: "Dainese_glove2", price: "$400", star: "/images/3Stars.jpg", image: "/images/dainese_gloves2.jpg" },
+        {  name: "revit_cassini_glove", price: "$750", star: "/images/5Stars.jpg", image: "/images/revit_cassini_glove.jpg" },
+        {  name: "Royal_boots", price: "$799", star: "/images/4Stars.jpg", image: "/images/Royal_boots.jpg" },
+        {  name: "shima_boot", price: "$699", star: "/images/4Stars.jpg", image: "/images/shima_boot.jpg" },
+        {  name: "waterproff_pant", price: "$699", star: "/images/4Stars.jpg", image: "/images/waterproff_pant.jpg" },
+        {  name: "dainese_gloves3", price: "$699", star: "/images/4Stars.jpg", image: "/images/dainese_gloves3.jpg" },
+        
     ];
 import { useEffect, useState } from "react";
 import { Navbar } from "../assets/components/sections/Navbar"
@@ -75,8 +101,6 @@ export const ShopAll = ( () => {
     const [detailToggle, setDetailToggle] = useState({});
 
     const toggleSubDetail = (typeFilter, index) => {
-        console.log("typeFilter: ", typeFilter);
-        console.log("index: ", index)
         setSubDetailToggle((pre) => ({
             ...pre,
             [typeFilter + index]: !pre[typeFilter + index],
@@ -89,20 +113,11 @@ export const ShopAll = ( () => {
 
 
     }
-    useEffect(() => 
-    {
-        console.log("detailToggle: ", detailToggle)
-    }, [detailToggle])
-
-
-
-    
-
     return (
         <>
             <Navbar/>
 
-            <div className = "w-full min-h-screen bg-gradient-to-r from-gray-950 to-gray-800">
+            <div className = "w-full min-h-screen bg-gradient-to-r from-gray-950 to-gray-800 flex flex-wrap">
 
                 {/* filter navbar */}
 
@@ -122,7 +137,7 @@ export const ShopAll = ( () => {
                                                     </span>
                                                             
                                                     {/* up or down arrow */}
-                                                    {detailToggle[index]? <span className="text-md p-2 opacity-80">&or;</span>:<span className="text-md p-2 opacity-80">&and;</span>}
+                                                    {detailToggle[index]? <span className="text-sm p-2 opacity-80">&or;</span>:<span className="text-sm p-2 opacity-80">&and;</span>}
 
                                                 
                                                 </div>
@@ -134,7 +149,7 @@ export const ShopAll = ( () => {
                                                             <div className=" pl-20 text-gray-50 cursor-pointer" onClick={() => toggleSubDetail(gen.typeFilter, index2)}>
                                                                 <span className="text-xl font-semibold">{detail.name}</span>
                                                                 {/* up or down arrow */}
-                                                                {subDetailToggle[gen.typeFilter+index2]? <span className="text-md p-2 opacity-80">&or;</span>:<span className="text-md p-2 opacity-80">&and;</span>}
+                                                                {subDetailToggle[gen.typeFilter+index2]? <span className="text-sm p-2 opacity-80">&or;</span>:<span className="text-sm p-2 opacity-80">&and;</span>}
                                                                 
                                                             </div>
                                                             {/* sub_detail */}
@@ -153,17 +168,45 @@ export const ShopAll = ( () => {
                                                                 ))}
                     
                                                         </li>
-
                                                 ))}
                                             </ul>
 
                                             </li>
                                         </ul>
-
                         ))}
                         
                     </div>
 
+                </div>
+
+                {/* main section */}
+                <div className="min-h-screen w-5/6  pt-20 pl-40 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-52 bg-white shadow-xl shadow-amber-100/40">
+                        
+             
+                        
+                        {items.map((category, index) => (
+                            <div key={index} className="flex-shrink-0 min-w-[150px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[250px] p-4 snap-center">
+                                <div className="w-full h-full cursor-pointer transition-all group perspective-1000">
+                                    <img
+                                        className="w-full h-[150px] md:h-[200px] lg:h-[300px] object-cover opacity-80 
+                                            transform transition-transform duration-300 group-hover:translate-y-[-5px] group-hover:scale-105"
+                                        src={category.image}
+                                        alt={category.name}
+                                    />
+                                    <div className="flex flex-col items-center mt-2">
+                                        <p className="text-md sm:text-xl md:text-2xl lg:text-3xl text-gray-800 capitalize tracking-tight">{category.name}</p>
+                                        <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-800 capitalize tracking-tight font-bold">{category.price}</p>
+                                        <img
+                                            className="w-[150PX] h-[30px] lg:h-[50px] object-cover opacity-80 pb-2"
+                                            src={category.star}
+                                            alt={category.name}
+                                        />
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    
                 </div>
 
             </div>

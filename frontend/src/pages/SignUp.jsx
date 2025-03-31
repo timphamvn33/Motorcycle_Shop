@@ -48,7 +48,6 @@ export const SignUp = () => {
     };
 
     const closeSignUpBox = () => {
-      console.log("hello close sign up")
         navigate('/Home'); // Navigate back to the home page or close the modal
     };
 
