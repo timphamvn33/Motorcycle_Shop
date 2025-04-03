@@ -1,0 +1,10 @@
+version: '3'
+services:
+  backend:
+    image: motorcycle-backend # Image name from the previous build
+    build: . # Optional: Build from Dockerfile in the current directory
+    ports:
+      - "5000:5000" # Expose port 5000 inside the container to port 5000 on the host machine
+    container_name: motor
+    environment:
+      - NODE_ENV=production # You can define environment variables here if needed

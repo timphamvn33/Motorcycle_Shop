@@ -21,7 +21,6 @@ router.get("/UserProfile", authMiddleware, async (req, res) => {
 
 router.put("/UpdateUser", authMiddleware, async (req, res) => {
     try {
-        console.log("hello update");
         const userId = req.user.id;
         const updateData = req.body;
 
