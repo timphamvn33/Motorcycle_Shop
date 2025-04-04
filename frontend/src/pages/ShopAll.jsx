@@ -2,17 +2,20 @@
 import { useEffect, useState } from "react";
 import { Navbar } from "../assets/components/sections/Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
 export const ShopAll = () => {
     const [items, setItems] = useState([]);
     const [generalList, setGeneralList] = useState([]);
+    const navigate = useNavigate();
 
     // retrieves the items from ther server
     useEffect( () => {
         const fetchItems = async () => {
             const itemsRes = await axios.get("http://localhost:5000/api/itemAll/items");
             
+            //console.log(itemsRes.data[0]._id);
             setItems (itemsRes.data);
 
         }
@@ -25,7 +28,6 @@ export const ShopAll = () => {
     useEffect(() => {
         const generalFiltersRes = async () => {
             const generalFilterRes = await axios.get("http://localhost:5000/api/generalFilterMenu/generalFilter");
-            console.log("gen: ", generalFilterRes);
             setGeneralList(generalFilterRes.data);
             
         }
@@ -117,7 +119,7 @@ export const ShopAll = () => {
                 {/* main section */}
                 <div className="min-h-screen w-5/6 p-40 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-52 bg-white shadow-xl shadow-amber-100/40">    
                         {items.map((category, index) => (
-                            <div key={index} className="flex-shrink-0 min-w-[150px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[250px] p-4 snap-center">
+                            <div key={index} className="flex-shrink-0 min-w-[150px] sm:min-w-[180px] md:min-w-[220px] lg:min-w-[250px] p-4 snap-center" onClick={() => navigate(`/ItemDetail/${category._id}`)}>
                                 <div className="w-full h-full cursor-pointer transition-all group perspective-1000">
                                     <img
                                         className="w-full h-[150px] md:h-[200px] lg:h-[250px] object-cover opacity-80 

@@ -4,17 +4,23 @@ import { RidingGear } from "./RidingGear";
 
 const navbarOption = [{ name: "RIDING GEAR" }, { name: "PARTS" }, { name: "ACCESSORIES" }, { name: "SALE" }];
 
-export const Navbar = ({ isSmallScreen, isMobileMenuClick, setIsMobileMenuClick, isUserLogin }) => {
+export const Navbar = ({ isSmallScreen, setIsMobileMenuClick, isUserLogin, quantityItemAdded, setQuantityItemAdded }) => {
     const [isCategoryMenuClick, setIsCategoryMenuClick] = useState(false);
     const [showSale, setShowSale] = useState(true);
     const [mainMenuOn, setMainMenuOn] = useState(false);
+    const [showItemAdded, setShowItemAdded] = useState(false);
     const navigate = useNavigate();
     const moveToLoginPage = () => navigate('/Login');
     const moveToUserProfilePage = () => navigate("/UserProfile");
     const movetoHomePage = () => navigate('/Home');
 
-
-
+    useEffect(() => {
+        if (quantityItemAdded > 0) {
+            setShowItemAdded(true);
+        } else {
+            setShowItemAdded(false);
+        }
+    }, [quantityItemAdded]);
 
     const clickMobileMenu = () => {
         setIsMobileMenuClick(prev => !prev);
@@ -98,7 +104,16 @@ export const Navbar = ({ isSmallScreen, isMobileMenuClick, setIsMobileMenuClick,
                         ) : (
                             <img src="/images/profile.png" alt="Profile" onClick={moveToLoginPage} className="cursor-pointer w-10 h-10" />
                         )}
-                            <img src="/images/cart.png" alt="Cart" className=" cursor-pointer w-10 h-10" />
+
+                        <div className="relative cursor-pointer">
+                            {/* Cart Icon */}
+                            <img src="/images/cart.png" alt="Cart" className="cursor-pointer w-10 h-10" />
+
+                            {/* Item Count Badge */}
+                            <div className={`${showItemAdded ? "absolute top-0 right-0 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center" : "hidden"}`}>
+                                {quantityItemAdded}
+                            </div>
+                        </div>
 
                         {/* Mobile Menu Icon */}
                         {isSmallScreen && (
