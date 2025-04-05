@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const sizes = [{name: "XXL"},{name: "XL"},{name: "LG"}, {name: "MD"}, {name: "SM"}, {name: "XSM"}];
 
-export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded}) => {
+export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded, itemsAdded, setItemsAdded}) => {
     const [itemDetail, setItemDetail] = useState(null);
     const [quantityItem, setQuantityItem] = useState("0");
     const [pickedSize, setPickedSize] = useState();
@@ -29,16 +29,19 @@ export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded}) => {
        
     }, [id]);
 
-    const itemAddedUpdate = ( obj ) => {
+    const clickToCart = ( obj ) => {
         if(parseInt(quantityItem) <= 0 || !quantityItem || pickedSize == null) {
             setAlert(() => true);
-            // ⏱️ Hide the alert after 5 seconds
+            // ⏱️ Hide the alert after 3 seconds
             setTimeout(() => {
                 setAlert(false);
             }, 3000);
             return;
             
         }
+
+        const itemsMoveToCart = [{name: itemDetail.name, star: itemDetail.star, price: itemDetail.price, image:itemDetail.image, size: pickedSize, quantity: quantityItem}];
+        setItemsAdded(itemsMoveToCart)
         setQuantityItemAdded(quantityItem);
         console.log("obj: ", obj);
     }
@@ -53,7 +56,6 @@ export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded}) => {
                 return {};
             }
             setPickedSize(sizeName);
-
             
             return { [sizeName]: true };  
 
@@ -72,7 +74,7 @@ export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded}) => {
     if (!itemDetail) {
         return (
             <>
-                <Navbar quantityItemAdded = {quantityItemAdded} setQuantityItemAdded = {setQuantityItemAdded}/>
+                <Navbar/>
                 <div className="flex justify-center items-center min-h-screen">
                     <div className="text-center">
                         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-solid mx-auto mb-4"></div>
@@ -84,7 +86,7 @@ export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded}) => {
     }
     return ( 
     <>
-        <Navbar quantityItemAdded = {quantityItemAdded} setQuantityItemAdded = {setQuantityItemAdded}/>
+        <Navbar quantityItemAdded = {quantityItemAdded} setQuantityItemAdded = {setQuantityItemAdded} itemsAdded = {itemsAdded} setItemsAdded = {setItemsAdded}/>
         <div className="min-h-screen w-full bg-white">
             <div className="w-full p-10 lg:p-40 grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div className="w-2/3 lg:w-full">
@@ -133,7 +135,7 @@ export const ItemDetail = ({quantityItemAdded, setQuantityItemAdded}) => {
                     
                     <div>
                         <button 
-                            onClick={() => itemAddedUpdate("add")}
+                            onClick={() => clickToCart("add")}
                             className=" w-40 lg:w-52 h-8 lg:h-12 bg-blue-600 cursor-pointer hover:bg-blue-700 hover:border-blue-900 rounded-xl hover:border-2">
                             <span className="text-gray-900 text-md p-0.5">
                                 ADD TO CART

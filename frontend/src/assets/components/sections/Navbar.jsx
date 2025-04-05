@@ -4,7 +4,7 @@ import { RidingGear } from "./RidingGear";
 
 const navbarOption = [{ name: "RIDING GEAR" }, { name: "PARTS" }, { name: "ACCESSORIES" }, { name: "SALE" }];
 
-export const Navbar = ({ isSmallScreen, setIsMobileMenuClick, isUserLogin, quantityItemAdded, setQuantityItemAdded }) => {
+export const Navbar = ({ isSmallScreen, setIsMobileMenuClick, isUserLogin, quantityItemAdded, setQuantityItemAdded, itemsAdded, setItemsAdded}) => {
     const [isCategoryMenuClick, setIsCategoryMenuClick] = useState(false);
     const [showSale, setShowSale] = useState(true);
     const [mainMenuOn, setMainMenuOn] = useState(false);
@@ -105,7 +105,9 @@ export const Navbar = ({ isSmallScreen, setIsMobileMenuClick, isUserLogin, quant
                             <img src="/images/profile.png" alt="Profile" onClick={moveToLoginPage} className="cursor-pointer w-10 h-10" />
                         )}
 
-                        <div className="relative cursor-pointer">
+                        <div 
+                            onClick={() => navigate("/Cart")}
+                            className="relative cursor-pointer">
                             {/* Cart Icon */}
                             <img src="/images/cart.png" alt="Cart" className="cursor-pointer w-10 h-10" />
 
